@@ -6,7 +6,6 @@ on:
       - main
       - master
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -14,7 +13,6 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
-
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -33,3 +31,21 @@ jobs:
 
       - name: Run tests
         run: mvn test
+#
+#
+#      - name: Upload reports
+#        if: always()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: testng-report
+#          path: target/surefire-reports/
+#          if-no-files-found: warn
+#
+#
+#      - name: Upload screenshots
+#        if: always()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: screenshots
+#          path: screenshots/
+#          if-no-files-found: warn
