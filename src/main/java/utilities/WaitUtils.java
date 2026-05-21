@@ -1,6 +1,5 @@
 package utilities;
 
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,17 +20,7 @@ public class WaitUtils {
         return wait.until(ExpectedConditions.urlContains(value));
     }
 
-
-    public boolean isElementVisible(WebElement element) {
-
-        try {
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
-    }
-
+    // metoda asteapta ca un element sa fie vizibil in pagina.
     public WebElement waitForElementVisible(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
