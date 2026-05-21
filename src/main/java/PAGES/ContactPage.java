@@ -3,16 +3,9 @@ package PAGES;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
 public class ContactPage extends BasePage {
-
-    WebDriver driver;
-    WebDriverWait wait;
-
 
     // add new contact
     @FindBy(id = "firstName")
@@ -97,7 +90,7 @@ public class ContactPage extends BasePage {
     }
 
     public void clickCancel() {
-        this.cancelButton.click();
+        cancelButton.click();
     }
 
     public void clickEditContact() {
@@ -107,33 +100,43 @@ public class ContactPage extends BasePage {
     public void editFirstName(String value) {
         editField(firstName, value);
     }
+
     public void editLastName(String value) {
         editField(lastName, value);
     }
+
     public void editBirthdate(String value) {
         editField(birthdate, value);
     }
+
     public void editEmail(String value) {
         editField(email, value);
     }
+
     public void editPhone(String value) {
         editField(phone, value);
     }
+
     public void editStreet1(String value) {
         editField(street1, value);
     }
+
     public void editStreet2(String value) {
         editField(street2, value);
     }
+
     public void editCity(String value) {
         editField(city, value);
     }
+
     public void editStateProvince(String value) {
         editField(stateProvince, value);
     }
+
     public void editPostalCode(String value) {
         editField(postalCode, value);
     }
+
     public void editCountry(String value) {
         editField(country, value);
     }
@@ -147,11 +150,11 @@ public class ContactPage extends BasePage {
     }
 
     public void deleteContact() {
-        waitUtils.waitForElementVisible(deleteContactButton).click();
+        deleteContactButton.click();
     }
 
     public void returnToHomePage() {
-        waitUtils.waitForElementVisible(returnToHomePage).click();
+        returnToHomePage.click();
     }
 
 }
