@@ -3,30 +3,21 @@ package PAGES;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.WaitUtils;
-
-import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends BasePage {
+
+    @FindBy(xpath = "//button[@id='logout']")
+    WebElement logoutButton;
+    @FindBy(id = "add-contact")
+    WebElement addNewContactButton;
+    @FindBy(id = "error")
+    WebElement errorMsg;
 
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(xpath = "//button[@id='logout']")
-    WebElement logoutButton;
-
-    @FindBy(id = "add-contact")
-    WebElement addNewContactButton;
-
-    @FindBy(id = "error")
-    WebElement errorMsg;
-
-    By contactRow = By.xpath("//tr[@class='contactTableBodyRow']//td");
 
     public void clickLogout() {
         waitUtils.waitForElementVisible(logoutButton).click();
@@ -57,6 +48,7 @@ public class HomePage extends BasePage {
         }
     }
 
+    // metoda verifica ca mesajul de eroare sa fie afisat.
     public boolean isErrorVisible() {
         return isElementDisplayed(errorMsg);
     }
