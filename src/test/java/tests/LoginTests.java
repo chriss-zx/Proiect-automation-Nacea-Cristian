@@ -15,7 +15,8 @@ public class LoginTests extends BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
 
-    // in acest test se apasa butonul de signup si se introduc datele VALIDE. se verifica daca datele nu sunt folosite, apoi se verifica ca redirect-ul sa fie corect, adica pe homepage.
+    // in acest test se apasa butonul de signup si se introduc datele VALIDE. se verifica daca datele nu sunt folosite, apoi se verifica ca [...]
+    // [...] redirect-ul sa fie corect, adica pe homepage.
     @Test
     public void signupTestValid() {
 
@@ -43,7 +44,8 @@ public class LoginTests extends BaseTest {
 
 
 
-    // in acest test se introduc datele de login VALIDE, apoi se verifica daca datele sunt valide. daca sunt valide, se redirectioneaza catre homepage si se verifica daca pagina este corecta. la final se apasa butonul logout.
+    // in acest test se introduc datele de login VALIDE, apoi se verifica daca datele sunt valide. daca sunt valide, se redirectioneaza catre [...]
+    // [...] homepage si se verifica daca pagina este corecta. la final se apasa butonul logout.
 
     @Test
     public void loginTestValid() {
