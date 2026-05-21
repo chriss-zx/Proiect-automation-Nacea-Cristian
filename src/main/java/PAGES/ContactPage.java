@@ -159,4 +159,8 @@ public class ContactPage extends BasePage {
         returnToHomePage.click();
     }
 
+    public WebElement waitForErrorVisible() {
+        return waitUtils.waitForElementVisible(errorMsg);
+    }
+
 }

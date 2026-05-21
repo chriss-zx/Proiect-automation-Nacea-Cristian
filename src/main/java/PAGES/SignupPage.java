@@ -55,4 +55,8 @@ public class SignupPage extends BasePage{
         submitButton.click();
     }
 
+    public WebElement waitForErrorVisible() {
+        return waitUtils.waitForElementVisible(errorMsg);
+    }
+
 }

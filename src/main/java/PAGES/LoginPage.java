@@ -40,6 +40,10 @@ public class LoginPage extends BasePage {
         return isElementDisplayed(errorMsg);
     }
 
+    public WebElement waitForErrorVisible() {
+        return waitUtils.waitForElementVisible(errorMsg);
+    }
+
 
     public void clickSubmit() {
         waitUtils.waitForElementVisible(submitButton).click();
