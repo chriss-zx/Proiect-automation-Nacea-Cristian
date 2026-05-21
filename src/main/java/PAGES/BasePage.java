@@ -8,18 +8,16 @@ import utilities.WaitUtils;
 
 public class BasePage {
 
-        protected WebDriver driver;
-        protected WaitUtils waitUtils;
+    protected WebDriver driver;
+    protected WaitUtils waitUtils;
 
-        public BasePage(WebDriver driver) {
-            this.driver = driver;
-            this.waitUtils = new WaitUtils(driver);
-        }
-
-    public boolean isError(WebElement element) {
-        return waitUtils.isElementVisible(element);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        this.waitUtils = new WaitUtils(driver);
     }
 
+
+    // metoda verifica ca un element din pagina sa fie afisat.
     public boolean isElementDisplayed(WebElement element) {
         try {
             return element.isDisplayed();
