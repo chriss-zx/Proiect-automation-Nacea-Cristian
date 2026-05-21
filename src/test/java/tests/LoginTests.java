@@ -4,24 +4,21 @@ import PAGES.HomePage;
 import PAGES.LoginPage;
 import PAGES.SignupPage;
 import base.BaseTest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utilities.WaitUtils;
 
 
 public class LoginTests extends BaseTest {
 
-    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
 
     // in acest test se apasa butonul de signup si se introduc datele VALIDE. se verifica daca datele nu sunt folosite, apoi se verifica ca [...]
     // [...] redirect-ul sa fie corect, adica pe homepage.
     @Test
     public void signupTestValid() {
+        String email = "testc" + System.currentTimeMillis() + "@test.com";
 
         SignupPage signupPage = new SignupPage(driver);
-        signupPage.signupAs("testc", "abcd", "testabc9876@test.com", "test123");
+        signupPage.signupAs("testc", "abcd", email, "test123");
         signupPage.clickSubmit();
 
         Assert.assertFalse(signupPage.isErrorVisible(), "User-ul nu a putut fi creat.");
@@ -31,7 +28,7 @@ public class LoginTests extends BaseTest {
 
     // in acest test se apasa butonul de signup si se introduc datele INVALIDE, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
     @Test
-    public void signupTestInvalid(){
+    public void signupTestInvalid() {
 
         SignupPage signupPage = new SignupPage(driver);
         signupPage.signupAs("testc", "abc", "testabc123@test.com", "test123");
@@ -41,7 +38,6 @@ public class LoginTests extends BaseTest {
 
         Assert.assertTrue(signupPage.isErrorVisible(), "User-ul nu a putut fi creat.");
     }
-
 
 
     // in acest test se introduc datele de login VALIDE, apoi se verifica daca datele sunt valide. daca sunt valide, se redirectioneaza catre [...]
@@ -73,6 +69,4 @@ public class LoginTests extends BaseTest {
 
         Assert.assertTrue(loginPage.isErrorVisible(), "Credentiale login invalide.");
     }
-
-
 }
