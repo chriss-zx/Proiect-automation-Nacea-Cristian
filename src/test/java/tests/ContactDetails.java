@@ -86,7 +86,8 @@ public class ContactDetails extends BaseTest {
 
 
     // in acest test se face login-ul, se verifica ca mesajul de eroare sa nu fie afisat, apoi se redirectioneaza catre homepage si se verifica ca pagina sa fie cea corecta, adica homepage.
-    // se apasa pe index-ul unui contact, se verifica ca pagina deschisa sa fie cea corecta si se apasa butonul "Delete Contact".
+    // se apasa pe index-ul unui contact, se verifica ca pagina deschisa sa fie cea corecta si se apasa butonul "Delete Contact". mai apoi se accepta alerta dechisa, se verifica ca pagina deschisa sa fie homepage, [...]
+    // [...] iar ca pas urmator se asteapta ca, contactul sa dispara de pe pagina si se face verificarea.
     @Test
     public void DeleteContactTest() {
 
@@ -98,10 +99,16 @@ public class ContactDetails extends BaseTest {
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
         HomePage homePage = new HomePage(driver);
-        homePage.clickOnContact(1);
+        homePage.clickOnContact(0);
         Assert.assertTrue(waitUtils.waitForUrlContains("contactDetails"), "URL-ul nu contine contactDetails.");
 
         ContactPage contactPage = new ContactPage(driver);
         contactPage.deleteContact();
+        waitUtils.acceptAlert();
+
+        Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
+
+        waitUtils.waitForContactToDisappear("Iulia Boierescu");
+        Assert.assertFalse(contactPage.isContactPresent("Iulia Boierescu"), "Contactul inca exista.");
     }
 }
