@@ -141,6 +141,8 @@ public class ContactPage extends BasePage {
         editField(country, value);
     }
 
+
+    // metoda face click pe input, foloseste tastele *CTRL + A* pentru a selecta tot textul din input, dupa care apasa tasta backspace si introduce noua valoare.
     public void editField(WebElement element, String value) {
 
         element.click();
