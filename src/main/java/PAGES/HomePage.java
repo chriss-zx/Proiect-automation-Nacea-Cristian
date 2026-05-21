@@ -49,7 +49,6 @@ public class HomePage extends BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", row);
 
         waitUtils.waitForElementVisible(row);
-//        wait.until(ExpectedConditions.visibilityOf(row));
 
         try {
             row.click();
@@ -59,6 +58,6 @@ public class HomePage extends BasePage {
     }
 
     public boolean isErrorVisible() {
-        return isError(errorMsg);
+        return isElementDisplayed(errorMsg);
     }
 }

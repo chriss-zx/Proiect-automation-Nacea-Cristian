@@ -54,7 +54,7 @@ public class SignupPage extends BasePage{
     }
 
     public boolean isErrorVisible() {
-        return isError(errorMsg);
+        return isElementDisplayed(errorMsg);
     }
 
     public void clickSubmit() {
