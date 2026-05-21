@@ -163,4 +163,13 @@ public class ContactPage extends BasePage {
         return waitUtils.waitForElementVisible(errorMsg);
     }
 
+    // metoda verifica daca contactul este prezent pe pagina
+    public boolean isContactPresent(String name) {
+        try {
+            return driver.findElement(By.xpath("//td[contains(text(),'" + name + "')]")).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
 }
