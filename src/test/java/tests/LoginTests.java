@@ -28,13 +28,15 @@ public class LoginTests extends BaseTest {
     }
 
 
-    // in acest test se apasa butonul de signup si se introduc datele INVALIDE, dupa care se verifica ca mesajul de eroare sa fie afisat.
+    // in acest test se apasa butonul de signup si se introduc datele INVALIDE, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
     @Test
     public void signupTestInvalid(){
 
         SignupPage signupPage = new SignupPage(driver);
         signupPage.signupAs("testc", "abc", "testabc123@test.com", "test123");
         signupPage.clickSubmit();
+
+        signupPage.waitForErrorVisible();
 
         Assert.assertTrue(signupPage.isErrorVisible(), "User-ul nu a putut fi creat.");
     }
@@ -58,12 +60,14 @@ public class LoginTests extends BaseTest {
     }
 
 
-    // in acest test se introduc datele de login INVALIDE si se verifica ca mesajul de eroare sa fie afisat.
+    // in acest test se introduc datele de login INVALIDE, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
     @Test
     public void loginTestInvalid() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("test", "test123");
         loginPage.clickSubmit();
+
+        loginPage.waitForErrorVisible();
 
         Assert.assertTrue(loginPage.isErrorVisible(), "Credentiale login invalide.");
     }

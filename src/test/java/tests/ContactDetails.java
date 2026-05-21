@@ -51,7 +51,7 @@ public class ContactDetails extends BaseTest {
 
     // in acest test se face login-ul, se verifica ca mesajul de eroare sa nu fie afisat, apoi se redirectioneaza catre homepage si se verifica ca pagina sa fie cea corecta, adica homepage.
     // se apasa pe index-ul unui contact, se verifica ca pagina deschisa sa fie cea corecta, iar mai apoi se poate modifica fiecare camp separat folosind date INVALIDE. [...]
-    // [...] dupa apasarea butonului submit, se verifica ca mesajul de eroare sa fie afisat
+    // [...] dupa apasarea butonului submit, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
     @Test
     public void InvalidContactDetailsTest() {
 
@@ -78,6 +78,8 @@ public class ContactDetails extends BaseTest {
         contactPage.editCity("Bucuresti");
 
         contactPage.clickSubmit();
+
+        contactPage.waitForErrorVisible();
 
         Assert.assertTrue(contactPage.isErrorVisible(), "Datele introduse nu pot fi validate.");
     }
