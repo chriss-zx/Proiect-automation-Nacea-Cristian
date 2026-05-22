@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 
-    public static WebDriver driver;
+    public WebDriver driver;
 
     public static WebDriver getDriver() {
         if(driver == null) {
@@ -24,7 +24,6 @@ public class DriverFactory {
 
     private static FirefoxOptions getFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
 
         if (isCi()) {
             options.addArguments("--headless");
