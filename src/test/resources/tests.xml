@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Proiect">
+    
+    <listeners>
+        <listener class-name="listener.ExtentTestListener"/>
+    </listeners>
+    
+    <test name="UITest">
+        <classes>
+            <class name="tests.LoginTests"/>
+            <class name="tests.AddNewContact"/>
+            <class name="tests.ContactDetails"/>
+        </classes>
+    </test>
+
+    <test name="APITest">
+        <classes>
+            <class name="API.tests.AuthTests"/>
+            <class name="API.tests.ContactsTests"/>
+        </classes>
+
+    </test>
+
+</suite>
