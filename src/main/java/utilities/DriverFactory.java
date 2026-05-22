@@ -10,7 +10,7 @@ public class DriverFactory {
 
     public static WebDriver getDriver() {
         if(driver == null) {
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(getFirefoxOptions());
         }
         return driver;
     }
