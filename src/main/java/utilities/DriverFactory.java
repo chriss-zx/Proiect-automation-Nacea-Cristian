@@ -24,7 +24,7 @@ public class DriverFactory {
 
     private static FirefoxOptions getFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--disable-notifications");
 
         if (isCi()) {
