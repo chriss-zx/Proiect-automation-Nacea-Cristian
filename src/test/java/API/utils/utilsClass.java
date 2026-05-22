@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 public class utilsClass {
@@ -124,5 +125,17 @@ public class utilsClass {
                 .delete(TestConfig.testerContactList_base_url + TestConfig.users_endpoint + "/me")
                 .then()
                 .statusCode(200);
+    }
+
+    public static ValidatableResponse deleteContact(String token, String contactId) {
+
+        return given()
+
+                .header("Authorization", "Bearer " + token)
+                .when()
+                .delete(TestConfig.testerContactList_base_url + TestConfig.contact_endpoint + "/" + contactId)
+                .then()
+                .statusCode(200)
+                .body(containsString("Contact deleted"));
     }
 }
