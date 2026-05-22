@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
     public static WebDriver getDriver() {
         if(driver == null) {
