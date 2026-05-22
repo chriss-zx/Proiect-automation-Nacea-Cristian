@@ -50,7 +50,7 @@ public class utilsClass {
         return token;
     }
 
-    public static ValidatableResponse addContact(String token, String firstName, String lastName, String birthdate, String email, String phone, String street1, String street2, String city, String stateProvince, String postalCode, String country) {
+    public static String addContact(String token, String firstName, String lastName, String birthdate, String email, String phone, String street1, String street2, String city, String stateProvince, String postalCode, String country) {
         Map<String, String> payload = new HashMap<>();
         payload.put("firstName", firstName);
         payload.put("lastName", lastName);
@@ -71,6 +71,43 @@ public class utilsClass {
                 .when()
                 .post(TestConfig.testerContactList_base_url + TestConfig.contact_endpoint)
                 .then()
-                .statusCode(201);
+                .statusCode(201)
+                .extract()
+                .path("_id");
+    }
+
+    public static ValidatableResponse updateContact(String token, String contactId, String firstName, String lastName, String birthdate, String email, String phone, String street1, String street2, String city, String stateProvince, String postalCode, String country) {
+        Map<String, String> payload = new HashMap<>();
+        payload.put("firstName", firstName);
+        payload.put("lastName", lastName);
+        payload.put("birthdate", birthdate);
+        payload.put("email", email);
+        payload.put("phone", phone);
+        payload.put("street1", street1);
+        payload.put("street2", street2);
+        payload.put("city", city);
+        payload.put("stateProvince", stateProvince);
+        payload.put("postalCode", postalCode);
+        payload.put("country", country);
+
+        return given()
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)
+                .body(payload)
+                .when()
+                .put(TestConfig.testerContactList_base_url + TestConfig.contact_endpoint + "/" + contactId)
+                .then()
+                .statusCode(200);
+    }
+
+    public static ValidatableResponse getContactById(String token, String contactId) {
+
+        return given()
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)
+                .when()
+                .get(TestConfig.testerContactList_base_url + TestConfig.contact_endpoint + "/" + contactId)
+                .then()
+                .statusCode(200);
     }
 }
