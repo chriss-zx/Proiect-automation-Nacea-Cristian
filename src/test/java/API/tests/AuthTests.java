@@ -3,6 +3,7 @@ package API.tests;
 import API.config.TestConfig;
 import API.data.TestData;
 import API.utils.utilsClass;
+import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,25 +25,42 @@ public class AuthTests {
 
     @Test
     public void loginWithToken() {
-        String token = utilsClass.getToken(TestData.email, TestData.password);
-        given()
-                .header("Authorization", "Bearer " + token)
-                .when()
-                .get(TestConfig.testerContactList_base_url + TestConfig.login_endpoint)
-                .then()
-                .statusCode(200)
-                .body("email", notNullValue())
-                .body("password", notNullValue());
-    }
+            String payload = "{\n" +
+                    "  \"email\": \"" + TestData.email + "\",\n" +
+                    "  \"password\": \"" + TestData.password + "\"\n" +
+                    "}";
+
+            given()
+                    .header("Content-Type", "application/json")
+                    .body(payload)
+                    .when()
+                    .post(TestConfig.testerContactList_base_url + TestConfig.login_endpoint)
+                    .then()
+                    .statusCode(200)
+                    .body("token", notNullValue());
+        }
+
 
     @Test
     public void logoutTest() {
         String token = utilsClass.getToken(TestData.email, TestData.password);
+
         given()
                 .header("Authorization", "Bearer " + token)
                 .when()
                 .post(TestConfig.testerContactList_base_url + TestConfig.users_endpoint + "/logout")
                 .then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void deleteUser() {
+        String email = "api" + System.currentTimeMillis() + "@test.com";
+
+        String token = utilsClass.createUser("api", "testing", email, "test123");
+
+        ValidatableResponse response = utilsClass.deleteUser(token);
+        response
                 .statusCode(200);
     }
 }
