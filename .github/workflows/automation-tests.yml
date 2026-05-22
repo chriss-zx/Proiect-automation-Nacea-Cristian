@@ -53,5 +53,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extent-report
-          path: extent-reports
+          path: extent-reports/
           if-no-files-found: warn
