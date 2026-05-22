@@ -19,6 +19,7 @@ public class utilsClass {
         payload.put("password", password);
 
         return given()
+
                 .header("Content-Type", "application/json")
                 .body(payload)
                 .when()
@@ -65,6 +66,7 @@ public class utilsClass {
         payload.put("country", country);
 
         return given()
+
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + token)
                 .body(payload)
@@ -91,6 +93,7 @@ public class utilsClass {
         payload.put("country", country);
 
         return given()
+
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + token)
                 .body(payload)
@@ -103,10 +106,22 @@ public class utilsClass {
     public static ValidatableResponse getContactById(String token, String contactId) {
 
         return given()
-                .header("Content-Type", "application/json")
+
                 .header("Authorization", "Bearer " + token)
                 .when()
                 .get(TestConfig.testerContactList_base_url + TestConfig.contact_endpoint + "/" + contactId)
+                .then()
+                .statusCode(200);
+    }
+
+    public static ValidatableResponse deleteUser(String token) {
+
+        return given()
+
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)
+                .when()
+                .delete(TestConfig.testerContactList_base_url + TestConfig.users_endpoint + "/me")
                 .then()
                 .statusCode(200);
     }
