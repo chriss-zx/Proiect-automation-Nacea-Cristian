@@ -15,7 +15,7 @@ public class ContactDetails extends BaseTest {
     // [...] cu date VALIDE. dupa apasarea butonului submit, se verifica ca mesajul de eroare sa nu fie afisat, apoi se apasa butonul [...]
     // [...] return to homepage si se verifica ca pagina sa fie cea corecta.
 
-    @Test
+    @Test(priority = 2)
     public void ValidContactDetailsTest() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -26,7 +26,7 @@ public class ContactDetails extends BaseTest {
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
         HomePage homePage = new HomePage(driver);
-        homePage.clickOnContact(1);
+        homePage.clickOnContact(0);
         Assert.assertTrue(waitUtils.waitForUrlContains("contactDetails"), "URL-ul nu contine contactDetails.");
 
         ContactPage contactPage = new ContactPage(driver);
@@ -55,7 +55,7 @@ public class ContactDetails extends BaseTest {
     // [...] ca pagina sa fie cea corecta, adica homepage.
     // se apasa pe index-ul unui contact, se verifica ca pagina deschisa sa fie cea corecta, iar mai apoi se poate modifica fiecare camp separat [...]
     // [...] folosind date INVALIDE. dupa apasarea butonului submit, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
-    @Test
+    @Test(priority = 2)
     public void InvalidContactDetailsTest() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -66,7 +66,7 @@ public class ContactDetails extends BaseTest {
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
         HomePage homePage = new HomePage(driver);
-        homePage.clickOnContact(1);
+        homePage.clickOnContact(0);
         Assert.assertTrue(waitUtils.waitForUrlContains("contactDetails"), "URL-ul nu contine contactDetails.");
 
         ContactPage contactPage = new ContactPage(driver);
@@ -93,7 +93,7 @@ public class ContactDetails extends BaseTest {
     // se apasa pe index-ul unui contact, se verifica ca pagina deschisa sa fie cea corecta si se apasa butonul "Delete Contact".
     // mai apoi se accepta alerta dechisa, se verifica ca pagina deschisa sa fie homepage, dupa care se asteapta ca, contactul sa dispara [...]
     // [...] de pe pagina si se face verificarea.
-    @Test
+    @Test(priority = 3)
     public void DeleteContactTest() {
 
         LoginPage loginPage = new LoginPage(driver);

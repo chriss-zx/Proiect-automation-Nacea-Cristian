@@ -13,7 +13,7 @@ public class LoginTests extends BaseTest {
 
     // in acest test se apasa butonul de signup si se introduc datele VALIDE. se verifica daca datele nu sunt folosite, apoi se verifica ca [...]
     // [...] redirect-ul sa fie corect, adica pe homepage.
-    @Test
+    @Test(priority = -1)
     public void signupTestValid() {
         String email = "testc" + System.currentTimeMillis() + "@test.com";
 
@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
 
 
     // in acest test se apasa butonul de signup si se introduc datele INVALIDE, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
-    @Test
+    @Test(priority = -1)
     public void signupTestInvalid() {
 
         SignupPage signupPage = new SignupPage(driver);

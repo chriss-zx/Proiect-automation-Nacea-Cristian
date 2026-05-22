@@ -14,7 +14,7 @@ public class AddNewContact extends BaseTest {
     // dupa redirectionarea pe homepage, se apasa butonul de "Add a New Contact", se verifica ca pagina sa fie cea corecta si se introduc datele VALIDE, [...]
     // [...] dupa care se apasa butonul submit, se verifica ca pagina sa fie cea corecta si apoi se verifica daca contactul a fost adaugat.
 
-    @Test
+    @Test(priority = 1)
     public void addValidContactTest() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -44,7 +44,7 @@ public class AddNewContact extends BaseTest {
     // [...] introduc datele INVALIDE, dupa care se apasa butonul submit. se asteapta ca mesajul de eroare sa apara si apoi se verifica daca mesajul [...]
     // [...] de eroare este afisat.
 
-    @Test
+    @Test(priority = 1)
     public void addInvalidContactTest() {
 
         LoginPage loginPage = new LoginPage(driver);
