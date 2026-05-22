@@ -24,16 +24,13 @@ public class DriverFactory {
 
     private static FirefoxOptions getFirefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-notifications");
+        options.addArguments("--headless");
 
         if (isCi()) {
-            options.addArguments("--headless=new");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--headless");
         }
+
+        options.addPreference("layout.css.devPixelsPerPx", "1.0");
 
         return options;
     }
