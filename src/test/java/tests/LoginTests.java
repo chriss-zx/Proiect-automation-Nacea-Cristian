@@ -53,7 +53,7 @@ public class LoginTests extends BaseTest {
 
         Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginAs("testc@test.com", "test123");
+        loginPage.loginValid();
         loginPage.clickSubmit();
 
         Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
