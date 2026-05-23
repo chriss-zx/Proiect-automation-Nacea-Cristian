@@ -30,12 +30,13 @@ public class WaitUtils {
         wait.until(ExpectedConditions.alertIsPresent()).accept();
     }
 
-    public void dismissAlert() {
-        wait.until(ExpectedConditions.alertIsPresent()).dismiss();
-    }
-
     // metoda asteapta ca elementul din pagina sa dispara
     public boolean waitForContactToDisappear(String name) {
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//td[contains(text(),'" + name + "')]")));
+    }
+
+    // metoda asteapta ca elementul din pagina sa apara
+    public WebElement waitForContactToAppear(String name) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'" + name + "')]")));
     }
 }
