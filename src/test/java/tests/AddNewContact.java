@@ -5,6 +5,7 @@ import PAGES.HomePage;
 import PAGES.LoginPage;
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class AddNewContact extends BaseTest {
@@ -17,23 +18,31 @@ public class AddNewContact extends BaseTest {
     @Test(priority = 1)
     public void addValidContactTest() {
 
+        Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("testc@test.com", "test123");
         loginPage.clickSubmit();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
         Assert.assertFalse(loginPage.isErrorVisible(), "Credentiale login invalide.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
+        Reporter.log("Acum se apasa butonul 'Add new contact'.");
         HomePage homePage = new HomePage(driver);
         homePage.createNewContact();
 
+        Reporter.log("Acum se verifica ca URL-ul sa fie corect.");
         Assert.assertTrue(waitUtils.waitForUrlContains("addContact"), "URL-ul nu contine addContact.");
 
+        Reporter.log("Acum se introduc datele contactului.");
         ContactPage contactPage = new ContactPage(driver);
         contactPage.addNewContact("Iulia", "Boierescu", "1974/07/27", "boierescu.iulia@test.com", "0728468462", "Florilor, 84", "", "Cluj-Napoca", "", "283648", "Romania");
         contactPage.clickSubmit();
 
+        Reporter.log("Acum se verifica ca URL-ul sa fie corect.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
+
+        Reporter.log("Acum se verifica daca contactul a fost adaugat.");
         Assert.assertTrue(contactPage.isContactPresent("Iulia Boierescu"), "Contactul nu a fost adaugat.");
 
     }
@@ -47,24 +56,30 @@ public class AddNewContact extends BaseTest {
     @Test(priority = 1)
     public void addInvalidContactTest() {
 
+        Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("testc@test.com", "test123");
         loginPage.clickSubmit();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
         Assert.assertFalse(loginPage.isErrorVisible(), "Credentiale login invalide.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
+        Reporter.log("Acum se apasa butonul 'Add new contact'.");
         HomePage homePage = new HomePage(driver);
         homePage.createNewContact();
 
+        Reporter.log("Acum se verifica ca URL-ul sa fie corect.");
         Assert.assertTrue(waitUtils.waitForUrlContains("addContact"), "URL-ul nu contine addContact.");
 
+        Reporter.log("Acum se introduc datele contactului.");
         ContactPage contactPage = new ContactPage(driver);
         contactPage.addNewContact("Andrei", "Ionescu", "doesn't exist", "ionescu.andrei@test", "doesn't exist", "Marului, 726", "Bl. 7, sc. B", "Bucuresti", "Romania", "823664", "Romania");
         contactPage.clickSubmit();
 
         contactPage.waitForErrorVisible();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa fie vizibil.");
         Assert.assertTrue(homePage.isErrorVisible(), "Datele introduse nu pot fi validate.");
     }
 }
