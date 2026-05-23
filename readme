@@ -1,0 +1,59 @@
+1. Descriere generală
+
+    Acest proiect reprezinta un framework complet de testare automata, care acopera atat testarea interfetei de utilizator *UI*, dar si testarea serviciilor web *API*.
+
+    * Aplicatia folosita atat pentru testarea UI, cat si pentru testarea API este: Contact List - https://thinking-tester-contact-list.herokuapp.com/
+
+
+2. Tehnologii si instrumente folosite
+
+    * Limbaj de programare: Java
+    * UI Testing: Selenium
+    * API Testing: RestAssured
+    * Test Runner: TestNG
+    * Design: Page Object Model
+    * Build Tool: Maven
+    * Rapoarte: Extent Reports
+
+
+3. Arhitectura proiectului
+
+    ~ src/main/java/PAGES - contine clasele *Page Object Model*
+    ~ src/main/java/utilities - contine clasele utilitare
+    ~ src/test/java/API - contine toate pachetele & clasele necesare API testing-ului.
+    ~ src/test/java/base - contine metodele de deschidere/inchidere a browser-ului
+    ~ src/test/java/listener - contine clasa necesara raportului EXTENT
+    ~ src/test/java/tests - contine clasele de test UI
+    ~ src/test/java/utils - contine clasele necesare rapoartelor
+
+
+4. Rularea testelor
+
+    # Pentru rularea testelor este necesara instalarea JAVA JDK si MAVEN.
+    # Descarcarea proiectului pe local.
+    # Actualizarea dependintelor prin *mvn clean install* ( -DskipTests pentru o actualizare mai rapida, fara a rula toate testele)
+    # Testele pot fi rulate separat (test/clasa/pachet) sau din terminal folosind *mvn test*
+
+
+
+
+5. Continutul testelor
+
+    # UI #
+        ~ src/test/java/tests/LoginTests.java - contine 4 teste (2 pentru signup si 2 pentru login)
+        ~ src/test/java/tests/AddNewContact.java - contine 2 teste pentru adaugarea unui contact (date valide si date invalide)
+        ~ src/test/java/tests/ContactDetails.java - contine 2 teste pentru editarea unui contact existent si un test pentru stergerea unui contact existent
+
+
+    # API #
+        ~ src/test/java/API/tests/AuthTests.java - contine 4 teste:
+                                                                    * un test signup
+                                                                    * un test login
+                                                                    * un test logout
+                                                                    * un test delete user
+
+        ~ src/test/java/API/tests/ContactsTests.java - contine 4 teste:
+                                                                    * un test add contact
+                                                                    * un test update contact
+                                                                    * un test get contactList
+                                                                    * un test delete contact
