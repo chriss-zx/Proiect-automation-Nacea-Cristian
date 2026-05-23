@@ -31,6 +31,13 @@ public class LoginPage extends BasePage {
         return new HomePage(driver);
     }
 
+    public HomePage loginValid() {
+        this.email.sendKeys("testc@test.com");
+        this.password.sendKeys("test123");
+
+        return new HomePage(driver);
+    }
+
     public boolean isErrorVisible() {
         return isElementDisplayed(errorMsg);
     }
