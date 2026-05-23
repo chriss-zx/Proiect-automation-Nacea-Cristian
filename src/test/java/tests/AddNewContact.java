@@ -20,7 +20,7 @@ public class AddNewContact extends BaseTest {
 
         Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginAs("testc@test.com", "test123");
+        loginPage.loginValid();
         loginPage.clickSubmit();
 
         Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
@@ -42,6 +42,9 @@ public class AddNewContact extends BaseTest {
         Reporter.log("Acum se verifica ca URL-ul sa fie corect.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
+        Reporter.log("Acum se asteapta ca, contactul sa apara in lista.");
+        waitUtils.waitForContactToAppear("Iulia Boierescu");
+
         Reporter.log("Acum se verifica daca contactul a fost adaugat.");
         Assert.assertTrue(contactPage.isContactPresent("Iulia Boierescu"), "Contactul nu a fost adaugat.");
 
@@ -58,7 +61,7 @@ public class AddNewContact extends BaseTest {
 
         Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginAs("testc@test.com", "test123");
+        loginPage.loginValid();
         loginPage.clickSubmit();
 
         Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
