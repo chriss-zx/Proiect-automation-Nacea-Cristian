@@ -5,6 +5,7 @@ import PAGES.LoginPage;
 import PAGES.SignupPage;
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 
@@ -17,10 +18,12 @@ public class LoginTests extends BaseTest {
     public void signupTestValid() {
         String email = "testc" + System.currentTimeMillis() + "@test.com";
 
+        Reporter.log("Acum se introduc datele de signup.");
         SignupPage signupPage = new SignupPage(driver);
         signupPage.signupAs("testc", "abcd", email, "test123");
         signupPage.clickSubmit();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
         Assert.assertFalse(signupPage.isErrorVisible(), "User-ul nu a putut fi creat.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
     }
@@ -30,12 +33,14 @@ public class LoginTests extends BaseTest {
     @Test(priority = -1)
     public void signupTestInvalid() {
 
+        Reporter.log("Acum se introduc datele de signup.");
         SignupPage signupPage = new SignupPage(driver);
         signupPage.signupAs("testc", "abc", "testabc123@test.com", "test123");
         signupPage.clickSubmit();
 
         signupPage.waitForErrorVisible();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa fie vizibil.");
         Assert.assertTrue(signupPage.isErrorVisible(), "User-ul nu a putut fi creat.");
     }
 
@@ -46,10 +51,12 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginTestValid() {
 
+        Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("testc@test.com", "test123");
         loginPage.clickSubmit();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa nu fie vizibil.");
         Assert.assertFalse(loginPage.isErrorVisible(), "Credentiale login invalide.");
         Assert.assertTrue(waitUtils.waitForUrlContains("contactList"), "URL-ul nu contine contactList.");
 
@@ -61,12 +68,15 @@ public class LoginTests extends BaseTest {
     // in acest test se introduc datele de login INVALIDE, se asteapta ca mesajul de eroare sa fie afisat si se face verificarea.
     @Test
     public void loginTestInvalid() {
+
+        Reporter.log("Acum se introduc datele de login.");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs("test", "test123");
         loginPage.clickSubmit();
 
         loginPage.waitForErrorVisible();
 
+        Reporter.log("Acum se verifica ca mesajul de eroare sa fie vizibil.");
         Assert.assertTrue(loginPage.isErrorVisible(), "Credentiale login invalide.");
     }
 }
