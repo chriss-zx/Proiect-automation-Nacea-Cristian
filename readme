@@ -2,7 +2,7 @@
 
     Acest proiect reprezinta un framework complet de testare automata, care acopera atat testarea interfetei de utilizator *UI*, dar si testarea serviciilor web *API*.
 
-    * Aplicatia folosita atat pentru testarea UI, cat si pentru testarea API este: [Contact List](https://thinking-tester-contact-list.herokuapp.com/)
+    * Aplicatia folosita atat pentru testarea UI, cat si pentru testarea API este: Contact List - https://thinking-tester-contact-list.herokuapp.com/
 
 
 2. Tehnologii si instrumente folosite
@@ -18,13 +18,13 @@
 
 3. Arhitectura proiectului
 
-    ~ [PAGES](src/main/java/PAGES) - contine clasele *Page Object Model*
-    ~ [utilities](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/main/java/utilities) - contine clasele utilitare
-    ~ [API](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/API) - contine toate pachetele & clasele necesare API testing-ului.
-    ~ [base](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/base) - contine metodele de deschidere/inchidere a browser-ului
-    ~ [listener](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/listener) - contine clasa necesara raportului EXTENT
-    ~ [tests](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/tests) - contine clasele de test UI
-    ~ [utils](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/tree/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/utils) - contine clasele necesare rapoartelor
+    ~ src/main/java/PAGES - contine clasele *Page Object Model*
+    ~ src/main/java/utilities - contine clasele utilitare
+    ~ src/test/java/API - contine toate pachetele & clasele necesare API testing-ului.
+    ~ src/test/java/base - contine metodele de deschidere/inchidere a browser-ului
+    ~ src/test/java/listener - contine clasa necesara raportului EXTENT
+    ~ src/test/java/tests - contine clasele de test UI
+    ~ src/test/java/utils - contine clasele necesare rapoartelor
 
 
 4. Rularea testelor
@@ -40,19 +40,21 @@
 5. Continutul testelor
 
     # UI #
-        ~ [LoginTests](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/blob/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/tests/LoginTests.java) - contine 4 teste (2 pentru signup si 2 pentru login)
-        ~ [AddNewContact](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/blob/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/tests/AddNewContact.java) - contine 2 teste pentru adaugarea unui contact (date valide si date invalide)
-        ~ [ContactDetails](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/blob/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/tests/ContactDetails.java) - contine 2 teste pentru editarea unui contact existent si un test pentru stergerea unui contact existent
+        ~ src/test/java/tests/LoginTests.java - contine 4 teste (2 pentru signup si 2 pentru login)
+        ~ src/test/java/tests/AddNewContact.java - contine 2 teste pentru adaugarea unui contact (date valide si date invalide)
+        ~ src/test/java/tests/ContactDetails.java - contine 2 teste pentru editarea unui contact existent si un test pentru stergerea unui contact
 
 
     # API #
-        ~ [AuthTests](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/blob/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/API/tests/AuthTests.java) - contine 4 teste:
+
+        ~ src/test/java/API/tests/AuthTests.java - contine 4 teste:
                                                                     * un test signup
                                                                     * un test login
                                                                     * un test logout
                                                                     * un test delete user
 
-        ~ [ContactsTests](https://github.com/chriss-zx/Proiect-automation-Nacea-Cristian/blob/df69d05b7a7d679ea7c72ccec692a495a0f81e9c/src/test/java/API/tests/ContactsTests.java) - contine 4 teste:
+
+        ~ src/test/java/API/tests/ContactsTests.java - contine 4 teste:
                                                                     * un test add contact
                                                                     * un test update contact
                                                                     * un test get contactList
